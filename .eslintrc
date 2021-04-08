@@ -1,6 +1,6 @@
 {
   "rules": {
-    "quotes": [2, 'single'],
+    "quotes": [2, "single"],
     "semi": 2,
     "curly": 2,
     "camelcase": 0,
@@ -12,7 +12,6 @@
     "semi-spacing": 2,
     "no-shadow": 2
   },
-
   "env": {
     "browser": true,
     "node": true,
