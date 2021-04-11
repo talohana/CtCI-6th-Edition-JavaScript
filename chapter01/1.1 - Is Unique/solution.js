@@ -2,7 +2,9 @@
 const bruteForce = (s) => {
   for (let i = 0; i < s.length; i++) {
     for (let j = i + 1; j < s.length; j++) {
-      if (s[i] === s[j]) return false;
+      if (s[i] === s[j]) {
+        return false;
+      }
     }
   }
 
@@ -14,7 +16,9 @@ const withDataStructure = (s) => {
   const memory = {};
 
   for (let c of s) {
-    if (c in memory) return false;
+    if (c in memory) {
+      return false;
+    }
     memory[c] = true;
   }
 
@@ -23,7 +27,7 @@ const withDataStructure = (s) => {
 
 // O(n)
 const withoutDataStructure = (s) => {
-  const indexOffset = "a".charCodeAt(0);
+  const indexOffset = 'a'.charCodeAt(0);
   let mask = 0;
 
   for (let c of s) {
@@ -31,7 +35,9 @@ const withoutDataStructure = (s) => {
     const currentCharMask = 1 << (charCode - indexOffset);
     const exists = mask & currentCharMask;
 
-    if (exists) return false;
+    if (exists) {
+      return false;
+    }
 
     mask |= currentCharMask;
   }
@@ -40,14 +46,14 @@ const withoutDataStructure = (s) => {
 };
 
 // TESTS
-console.log("Brute Force:");
-console.log("abdcefc:", bruteForce("abdcefc"));
-console.log("abcdef:", bruteForce("abcdef"));
+console.log('Brute Force:');
+console.log('abdcefc:', bruteForce('abdcefc'));
+console.log('abcdef:', bruteForce('abcdef'));
 
-console.log("With DS:");
-console.log("abdcefc:", withDataStructure("abdcefc"));
-console.log("abcdef:", withDataStructure("abcdef"));
+console.log('With DS:');
+console.log('abdcefc:', withDataStructure('abdcefc'));
+console.log('abcdef:', withDataStructure('abcdef'));
 
-console.log("Without DS:");
-console.log("abdcefc:", withoutDataStructure("abdcefc"));
-console.log("abcdef:", withoutDataStructure("abcdef"));
+console.log('Without DS:');
+console.log('abdcefc:', withoutDataStructure('abdcefc'));
+console.log('abcdef:', withoutDataStructure('abcdef'));
