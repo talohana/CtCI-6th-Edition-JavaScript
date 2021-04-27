@@ -1,8 +1,8 @@
-var Graph = function() {
+var Graph = function () {
   this.nodes = {};
 };
 
-Graph.prototype.addEdge = function(node, edge) {
+Graph.prototype.addEdge = function (node, edge) {
   if (this.nodes[node] === undefined) {
     return 'node does not exist';
   } else if (this.nodes[node][edge]) {
@@ -12,7 +12,7 @@ Graph.prototype.addEdge = function(node, edge) {
   }
 };
 
-Graph.prototype.addNode = function(value) {
+Graph.prototype.addNode = function (value) {
   if (this.nodes[value] !== undefined) {
     return `node of value ${value} already exists`;
   } else {
@@ -20,7 +20,11 @@ Graph.prototype.addNode = function(value) {
   }
 };
 
-Graph.prototype.findEdges = function(node) {
+Graph.prototype.getNodes = function () {
+  return Object.keys(this.nodes);
+};
+
+Graph.prototype.findEdges = function (node) {
   if (this.nodes[node] === undefined) {
     return 'node does not exist';
   } else {
@@ -28,7 +32,7 @@ Graph.prototype.findEdges = function(node) {
   }
 };
 
-Graph.prototype.hasEdge = function(node, edge) {
+Graph.prototype.hasEdge = function (node, edge) {
   if (this.nodes[node] === undefined) {
     return false;
   } else {
@@ -36,11 +40,11 @@ Graph.prototype.hasEdge = function(node, edge) {
   }
 };
 
-Graph.prototype.hasNode = function(node) {
+Graph.prototype.hasNode = function (node) {
   return this.nodes[node] !== undefined;
 };
 
-Graph.prototype.removeEdge = function(node, edge) {
+Graph.prototype.removeEdge = function (node, edge) {
   if (this.nodes[node] === undefined) {
     return 'node does not exist';
   } else {
@@ -48,7 +52,7 @@ Graph.prototype.removeEdge = function(node, edge) {
   }
 };
 
-Graph.prototype.removeNode = function(node) {
+Graph.prototype.removeNode = function (node) {
   if (this.nodes[node] === undefined) {
     return 'node does not exist';
   } else {
