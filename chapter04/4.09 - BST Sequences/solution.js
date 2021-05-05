@@ -46,16 +46,8 @@ const weave = (first, second, results, prefix) => {
 
 const root = new BST(5);
 root.insert(6);
-root.insert(2);
-root.insert(1);
-root.insert(3);
+root.insert(7);
+// root.insert(1);
+// root.insert(3);
 
 console.log(bstSequences(root));
-
-// const first = [1, 2];
-// const second = [3, 4];
-// const weaved = [];
-
-// weave(first, second, weaved, []);
-
-// console.log(weaved);
