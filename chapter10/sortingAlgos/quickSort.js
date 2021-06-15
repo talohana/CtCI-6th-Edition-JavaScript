@@ -1,43 +1,41 @@
-// write the quickSort algorithm
+const { generateRandomArray } = require('./generateRandomArray');
 
-const swap = (array, left, right) => {
-  const temp1 = array[left];
-  const temp2 = array[right];
-  array[left] = temp2;
-  array[right] = temp1;
+const quickSort = originalArray => {
+  const array = [...originalArray];
+  const n = array.length;
+
+  if (n <= 1) return array;
+
+  const swap = (a, b) => ([array[a], array[b]] = [array[b], array[a]]);
+
+  const partition = (left, right, pivot) => {
+    while (left <= right) {
+      while (array[left] < pivot) left++;
+      while (array[right] > pivot) right--;
+
+      if (left <= right) {
+        swap(left, right);
+        left++;
+        right--;
+      }
+    }
+
+    return left;
+  };
+
+  const quickSort = (left, right) => {
+    if (left >= right) return;
+
+    const pivot = array[Math.floor((left + right) / 2)];
+    const index = partition(left, right, pivot);
+
+    quickSort(left, index - 1);
+    quickSort(index, right);
+  };
+
+  quickSort(0, n - 1);
+
+  return array;
 };
 
-const partition = (array, left, right) => {
-  const pivotIndex = Math.floor((left + right) / 2);
-  const pivot = array[pivotIndex]; 
-  while(left <= right) {
-    while(array[left] < pivot) {
-      left++;
-    }
-    while(pivot < array[right]) {
-      right--;
-    }
-    if (left <= right) {
-      console.log(`swap ${array[left]} and ${array[right]}`);
-      swap(array, left, right);
-      console.log(array);
-      left++;
-      right--;
-    }
-  }
-  return left;
-};
-
-const quickSort = (array, left, right) => {
-  const index = partition(array, left, right);
-  if (left < index - 1) {
-    quickSort(array, left, index - 1);
-  }
-  if (index < right) {
-    quickSort(array, index, right);
-  }
-};
-
-let array = [4, 7, 1, 9, 3, 8, 0, 2];
-quickSort(array, 0, array.length - 1);
-console.log('quicksorted array is', array);
+exports.quickSort = quickSort;
