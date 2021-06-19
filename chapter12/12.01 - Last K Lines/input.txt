@@ -1,0 +1,5 @@
+This file is
+5 lines long
+But in the question
+You should only
+Print the last K lines
